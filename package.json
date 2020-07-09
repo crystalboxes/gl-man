@@ -1,0 +1,19 @@
+{
+  "name": "gl-man",
+  "version": "1.0.0",
+  "description": "A WebGL library to simplify the 2D drawing.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gl-matrix": "^3.3.0"
+  }
+}
