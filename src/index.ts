@@ -1,5 +1,5 @@
 import { drawRect } from './drawing/draw-rect'
-import { drawCircle } from './drawing/draw-circle'
+import { drawCircle, setCircleResolution } from './drawing/draw-circle'
 import {
   clearColor,
   getGL,
@@ -33,6 +33,7 @@ const Graphics = {
   GraphicsBuffer,
   GraphicsBufferType,
   isContextInitialized,
+  setCircleResolution,
   setContext,
   setFramebuffer,
   setViewport,

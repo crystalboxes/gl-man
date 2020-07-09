@@ -25,6 +25,14 @@ export class GraphicsBuffer {
     }
   }
 
+  release() {
+    const gl = this.gl
+    gl.bindBuffer(this.glBufferType, this.buffer)
+    gl.deleteBuffer(this.buffer)
+    gl.bindBuffer(this.glBufferType, null)
+    this.buffer = null
+  }
+
   setData(data: Float32Array | Uint16Array) {
     const gl = this.gl
     gl.bindBuffer(this.glBufferType, this.buffer)

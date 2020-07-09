@@ -6,7 +6,7 @@ import { FLOAT } from "../gl/context"
 import { GraphicsBuffer, GraphicsBufferType } from "../gl/graphics-buffer"
 import { draw } from '../gl/draw'
 
-const defaultCircleResolution = 20
+let currentCircleResolution = 20
 
 type DrawCircleData = {
   vertexBuffer: GraphicsBuffer
@@ -16,6 +16,16 @@ type DrawCircleData = {
 
 let drawCircleData: DrawCircleData | null = null
 
+export function setCircleResolution(resolution: number) {
+  const newCircleResolution = resolution < 3 ? 3 : Math.floor(resolution)
+  if (currentCircleResolution == resolution) { return }
+  if (drawCircleData) {
+    drawCircleData.vertexBuffer.release()
+    drawCircleData = null
+  }
+  currentCircleResolution = newCircleResolution
+}
+
 export function drawCircle(x: number, y: number, r: number, color: Color, shader?: Shader | null) {
   if (!drawCircleData) {
     drawCircleData = {
@@ -24,7 +34,7 @@ export function drawCircle(x: number, y: number, r: number, color: Color, shader
       size: 0
     }
 
-    const circleResolution = defaultCircleResolution
+    const circleResolution = currentCircleResolution
     // make vertices from resolution
     let verts = []
     drawCircleData.size = 0;
