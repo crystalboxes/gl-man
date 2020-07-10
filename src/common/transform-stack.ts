@@ -27,7 +27,7 @@ export class TransformStack {
     if (this.isDirtyTransform) {
       this.cachedMatrix = mat4.create()
       mat4.ortho(this.cachedMatrix, 0, getWidth(), getHeight(), 0, -1, 1)
-      for (let x = this.transforms.length - 1; x >= 0; x--) {
+      for (let x = 0; x < this.transforms.length; x++) {
         let transform = this.transforms[x]
         mat4.mul(this.cachedMatrix, this.cachedMatrix, transform.matrix)
       }
