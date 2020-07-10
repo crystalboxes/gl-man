@@ -1,15 +1,10 @@
 import { TransformStack } from '../common/transform-stack'
 import { getGL, setFramebuffer, setViewport } from './context'
 
-class Image {
+export class Image {
   texture: WebGLTexture | null = null
   width = 1
   height = 1
-
-  draw(x: number, y: number, w: number, h: number) {
-    // TODO implement draw image
-    // Graphics.drawImage(this, x, y, w, h)
-  }
 }
 
 export class Framebuffer extends Image {
