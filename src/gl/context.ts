@@ -19,5 +19,15 @@ export function clearColor(col: Color) {
   _gl?.clear(getGL().COLOR_BUFFER_BIT)
 }
 
+let _strokeWidth = 0
+let _strokeColor = [0, 0, 0, 0]
+export const shouldDrawStroke = () => _strokeWidth < 0.0001;
+export function setStroke(width: number, color?: Color) {
+  if (width >= 0) { _strokeWidth = width }
+  if (color) {
+    _strokeColor = getRgba(color)
+  }
+}
+
 // https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Constants
 export const FLOAT = 0x1406
