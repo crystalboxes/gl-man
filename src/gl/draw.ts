@@ -2,6 +2,9 @@ import { Shader } from './shader'
 import { GraphicsBuffer } from './graphics-buffer'
 import { getGL } from './context'
 
+export const TRIANGLES = 0x0004
+export const TRIANGLE_STRIP = 0x0005
+
 export function draw(
   shader: Shader,
   inputNames: string[],
@@ -9,7 +12,8 @@ export function draw(
   offset: number,
   count: number,
   vertexBuffer: GraphicsBuffer,
-  indexBuffer: GraphicsBuffer | null
+  indexBuffer?: GraphicsBuffer,
+  primitiveType?: number,
 ) {
   const gl = getGL()
   // bind shader
@@ -38,7 +42,8 @@ export function draw(
     )
   }
 
-  const primitiveType = gl.TRIANGLES
+  // const primitiveType = gl.TRIANGLES
+  primitiveType = primitiveType || TRIANGLES
   if (indexBuffer) {
     const indexType = gl.UNSIGNED_SHORT
     gl.drawElements(primitiveType, count, indexType, offset)

@@ -59,8 +59,10 @@ export class Shader {
     this.textures = new Map()
   }
 
-  setTexture(id: string, texture: WebGLTexture) {
-    this.textures.set(id, texture)
+  setTexture(id: string, texture: WebGLTexture | null) {
+    if (texture) {
+      this.textures.set(id, texture)
+    }
   }
 
   setFloat(id: string, floatVal: number) {

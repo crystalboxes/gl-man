@@ -75,5 +75,5 @@ export function drawCircle(x: number, y: number, r: number, color: Color, shader
     normalized: false,
     stride: 0,
     offset: 0,
-  },], 0, drawCircleData.size, vertexBuffer, null)
+  },], 0, drawCircleData.size, vertexBuffer)
 }
